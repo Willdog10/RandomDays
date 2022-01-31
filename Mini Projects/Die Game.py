@@ -1,3 +1,4 @@
+from platform import win32_edition
 import random
 
 die1 = random.randint (1,6)
@@ -12,3 +13,4 @@ if (die1 + die2 + die3) == 7 or (die1 + die2 + die3)== 11:
     print ("you Win")
 
     print ("you Lost")
+
