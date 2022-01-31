@@ -8,7 +8,7 @@ from email.mime.text import MIMEText
 
 me = 'goalsinmind15@gmail.com' # change to your email
 p_reader = open('smith143','rb') # edit for your password
-cipher = p_reader.read('')
+cipher = p_reader.read()
 recipients = ['ashley.nicole0499@gmail.com'] # enter recipients here
 
 
