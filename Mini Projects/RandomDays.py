@@ -1,5 +1,3 @@
-
-
 today1 = 'MONDAY'
 print (today1)
 
@@ -15,4 +13,3 @@ print (today4)
 today5 = 'FRIDAY'
 print (today5)
 
-# Return a single random words
