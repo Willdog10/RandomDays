@@ -1,4 +1,4 @@
-
+import random
 
 today1 = 'MONDAY'
 print (today1)
