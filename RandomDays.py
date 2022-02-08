@@ -18,3 +18,5 @@ print (today5)
 # Return a single random word
 a = ["MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY"]
 print(random.choice(a))
+b = ["MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY"]
+print(random.choice(b))
