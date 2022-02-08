@@ -12,4 +12,3 @@ print (today4)
 
 today5 = 'FRIDAY'
 print (today5)
-
