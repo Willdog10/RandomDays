@@ -15,8 +15,14 @@ print (today4)
 today5 = 'FRIDAY'
 print (today5)
 
+#spaces
+print ("")
+print ("Random Words Below")
+
 # Return two random word's
 a = ["MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY"]
 print(random.choice(a))
 b = ["MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY"]
 print(random.choice(b))
+
+
